@@ -17,6 +17,13 @@ return {
   config = function()
     require('neo-tree').setup {
       filesystem = {
+        filtered_items = {
+          visible = true, -- show hidden files (dimmed)
+          hide_dotfiles = false, -- don't hide dotfiles
+          hide_gitignored = false,
+          hide_by_name = {},
+          never_show = { '.git' },
+        },
         window = {
           mappings = {
             ['\\'] = 'close_window',
@@ -27,9 +34,7 @@ return {
 
     -- Open neo-tree on startup
     vim.api.nvim_create_autocmd('VimEnter', {
-      callback = function()
-        require('neo-tree.command').execute { action = 'show' }
-      end,
+      callback = function() require('neo-tree.command').execute { action = 'show' } end,
     })
   end,
 }
