@@ -18,3 +18,8 @@ require('neo-tree').setup {
     },
   },
 }
+
+-- Open neo-tree on startup
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function() require('neo-tree.command').execute { action = 'show' } end,
+})
