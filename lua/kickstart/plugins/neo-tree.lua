@@ -12,7 +12,7 @@ return {
   },
   lazy = false,
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>e', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   config = function()
     require('neo-tree').setup {
@@ -26,15 +26,10 @@ return {
         },
         window = {
           mappings = {
-            ['\\'] = 'close_window',
+            ['<leader>e'] = 'close_window',
           },
         },
       },
     }
-
-    -- Open neo-tree on startup
-    vim.api.nvim_create_autocmd('VimEnter', {
-      callback = function() require('neo-tree.command').execute { action = 'show' } end,
-    })
   end,
 }
