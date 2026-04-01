@@ -7,7 +7,7 @@ vim.pack.add {
   'https://github.com/MunifTanjim/nui.nvim',
 }
 
-vim.keymap.set('n', '\\', '<Cmd>Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })
+vim.keymap.set('n', '<leader>e', '<Cmd>Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })
 
 require('neo-tree').setup {
   filesystem = {
@@ -20,13 +20,8 @@ require('neo-tree').setup {
     },
     window = {
       mappings = {
-        ['\\'] = 'close_window',
+        ['<leader>e'] = 'close_window',
       },
     },
   },
 }
-
--- Open neo-tree on startup
-vim.api.nvim_create_autocmd('VimEnter', {
-  callback = function() require('neo-tree.command').execute { action = 'show' } end,
-})
