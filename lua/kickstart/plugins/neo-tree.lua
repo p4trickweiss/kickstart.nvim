@@ -10,6 +10,12 @@ vim.pack.add {
 vim.keymap.set('n', '<leader>e', '<Cmd>Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })
 
 require('neo-tree').setup {
+  event_handlers = {
+    {
+      event = 'file_open_requested',
+      handler = function() require('neo-tree.command').execute { action = 'close' } end,
+    },
+  },
   filesystem = {
     filtered_items = {
       visible = true, -- show hidden files (dimmed)
