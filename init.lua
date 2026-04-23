@@ -842,7 +842,6 @@ require('lazy').setup({
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
           local buf, filetype = args.buf, args.match
-          local available_parsers = require('nvim-treesitter').get_available()
 
           local language = vim.treesitter.language.get_lang(filetype)
           if not language then return end
@@ -852,7 +851,7 @@ require('lazy').setup({
           if vim.tbl_contains(installed_parsers, language) then
             -- enable the parser if it is installed
             treesitter_try_attach(buf, language)
-          elseif vim.tbl_contains(available_parsers, language) then
+          elseif vim.tbl_contains(require('nvim-treesitter').get_available(), language) then
             -- if a parser is available in `nvim-treesitter` auto install it, and enable it after the installation is done
             require('nvim-treesitter').install(language):await(function() treesitter_try_attach(buf, language) end)
           else
