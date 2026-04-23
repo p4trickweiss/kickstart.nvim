@@ -839,10 +839,10 @@ require('lazy').setup({
         if has_indent_query then vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" end
       end
 
-      local available_parsers = require('nvim-treesitter').get_available()
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
           local buf, filetype = args.buf, args.match
+          local available_parsers = require('nvim-treesitter').get_available()
 
           local language = vim.treesitter.language.get_lang(filetype)
           if not language then return end
