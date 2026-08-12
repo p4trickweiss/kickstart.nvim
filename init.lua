@@ -815,10 +815,10 @@ do
     formatters_by_ft = {
       lua = { 'stylua' },
       go = { 'gofmt' },
-      typescript = { 'prettier' },
-      javascript = { 'prettier' },
-      json = { 'prettier' },
-      markdown = { 'prettier' },
+      typescript = { 'oxfmt' },
+      javascript = { 'oxfmt' },
+      json = { 'oxfmt' },
+      markdown = { 'oxfmt' },
 
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
